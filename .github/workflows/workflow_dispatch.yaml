@@ -1,9 +1,7 @@
 name: Workflow dispatch
 on:
   workflow_dispatch:
-    inputs:
-      guide:
-        description: 'デプロイできるよ'
+    description: 'デプロイできるよ'
 
 jobs:
   printDeploy:
