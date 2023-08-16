@@ -1,12 +1,35 @@
 name: Workflow dispatch
 on:
   workflow_dispatch:
+  
   push:
-    branches: [master]
+    branches: 
+    - "**"
+
+  pull_request:
 
 jobs:
   printDeploy:
     runs-on: ubuntu-latest
     steps:
-      - run: |
+      - name: Deploy log
+        run: |
           echo "Deploy!!!!"
+          echo "GITHUB_REF#refs/heads/: ${GITHUB_REF#refs/heads/}"
+          echo "GITHUB_HEAD_REF: ${GITHUB_HEAD_REF}"
+          echo "github.head_ref: ${{github.head_ref}}"
+          echo "------"
+          echo "GITHUB_BASE_REF: ${GITHUB_BASE_REF}"
+          echo "github.base_ref: ${{github.base_ref}}"
+          echo "GITHUB_REF#refs/base/: ${GITHUB_REF#refs/base/}"
+          echo "------"
+          echo "GITHUB_EVENT_NAME: ${GITHUB_EVENT_NAME}"
+          echo "---  conditions ----"
+          if [[ $GITHUB_EVENT_NAME == "push" ]] && [[ $GITHUB_HEAD_REF =~ (feature/dev-).*$ ]] ; then
+            echo "pppppppush!!!!"
+            # refPaths=(${GITHUB_HEAD_REF//\// })
+            # echo $refPaths[1]
+          elif [ $GITHUB_EVENT_NAME == "pull_request" ] ; then
+            echo "pppppppull_request!!!!!!!"
+          fi
+
