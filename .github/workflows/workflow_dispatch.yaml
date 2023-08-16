@@ -11,7 +11,8 @@ jobs:
     steps:
       - run: |
           echo "Deploy!!!!"
-          echo "${GITHUB_REF#refs/heads/}"
-          echo "${{github.head_ref}}"
-          echo "${GITHUB_BASE_REF}"
-          echo "${GITHUB_REF#refs/base/}"
+          echo "GITHUB_REF#refs/heads/: ${GITHUB_REF#refs/heads/}"
+          echo "github.head_ref: ${{github.head_ref}}"
+          echo "GITHUB_BASE_REF: ${GITHUB_BASE_REF}"
+          echo "github.head_ref: ${{github.base_ref}}"
+          echo "GITHUB_REF#refs/base/: ${GITHUB_REF#refs/base/}"
