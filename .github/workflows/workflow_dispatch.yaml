@@ -26,4 +26,5 @@ jobs:
             echo "pppppppush!!!!"
           elif [[ "$GITHUB_EVENT_NAME" == "pull_request" ]] ; then
             echo "pppppppull_request!!!!!!!"
+          fi
 
