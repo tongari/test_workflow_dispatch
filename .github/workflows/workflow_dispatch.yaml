@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
 
   push:
-  
+
   pull_request:
 
 jobs:
@@ -23,7 +23,7 @@ jobs:
           echo "------"
           echo "GITHUB_EVENT_NAME: ${GITHUB_EVENT_NAME}"
           echo "---  conditions ----"
-          if [[ $GITHUB_EVENT_NAME == "push" ]] && [[ $GITHUB_HEAD_REF =~ (feature/dev-).*$ ]] ; then
+          if [[ $GITHUB_EVENT_NAME == "push" ]] && [[ $GITHUB_REF#refs/heads/ =~ (feature/dev-).*$ ]] ; then
             echo "pppppppush!!!!!"
             # refPaths=(${GITHUB_HEAD_REF//\// })
             # echo $refPaths[1]
