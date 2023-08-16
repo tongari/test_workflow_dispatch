@@ -22,8 +22,8 @@ jobs:
           echo "------"
           echo "GITHUB_EVENT_NAME: ${GITHUB_EVENT_NAME}"
           echo "---  conditions ----"
-          # if [[ ${GITHUB_EVENT_NAME} == "push" ]] ; then
-          #   echo "pppppppush!!!!"
-          # elif [[ ${GITHUB_EVENT_NAME} == "pull_request" ]] ; then
-          #   echo "pppppppull_request!!!!!!!"
+          if ${{ GITHUB_EVENT_NAME == "push" }} ; then
+            echo "pppppppush!!!!"
+          elif ${{ GITHUB_EVENT_NAME == "pull_request" }} ; then
+            echo "pppppppull_request!!!!!!!"
 
