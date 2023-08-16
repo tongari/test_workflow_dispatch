@@ -9,7 +9,8 @@ jobs:
   printDeploy:
     runs-on: ubuntu-latest
     steps:
-      - run: |
+      - name: Deploy log
+        run: |
           echo "Deploy!!!!"
           echo "GITHUB_REF#refs/heads/: ${GITHUB_REF#refs/heads/}"
           echo "GITHUB_HEAD_REF: ${GITHUB_HEAD_REF}"
@@ -21,7 +22,7 @@ jobs:
           echo "------"
           echo "GITHUB_EVENT_NAME: ${GITHUB_EVENT_NAME}"
           echo "---  conditions ----"
-          if [${GITHUB_EVENT_NAME} == "push"] ; then
+          if ${GITHUB_EVENT_NAME} == "push" ; then
             echo "pppppppush!!!!"
-          elif [${GITHUB_EVENT_NAME} == "pull_request"] ; then
+          elif ${GITHUB_EVENT_NAME} == "pull_request" ; then
             echo "pppppppull_request!!!!!!!"
