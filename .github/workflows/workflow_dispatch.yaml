@@ -1,10 +1,8 @@
 name: Workflow dispatch
 on:
   workflow_dispatch:
-  
+
   push:
-    branches: 
-    - "**"
 
   pull_request:
 
@@ -25,11 +23,13 @@ jobs:
           echo "------"
           echo "GITHUB_EVENT_NAME: ${GITHUB_EVENT_NAME}"
           echo "---  conditions ----"
-          if [[ $GITHUB_EVENT_NAME == "push" ]] && [[ $GITHUB_HEAD_REF =~ (feature/dev-).*$ ]] ; then
-            echo "pppppppush!!!!"
-            # refPaths=(${GITHUB_HEAD_REF//\// })
-            # echo $refPaths[1]
-          elif [ $GITHUB_EVENT_NAME == "pull_request" ] ; then
-            echo "pppppppull_request!!!!!!!"
+          if [ $GITHUB_EVENT_NAME == "push" ] && [[ "${GITHUB_REF#refs/heads/}" =~ (feature/dev-).* ]] ; then
+              branchPath="${GITHUB_REF#refs/heads/}"
+              IFS='/' read -ra refPaths <<< "$branchPath"
+              echo "${refPaths[0]}/${refPaths[1]}"
+          elif [ $GITHUB_EVENT_NAME == "pull_request" ] && [[ "${GITHUB_HEAD_REF}" =~ (feature/dev-).* ]] ; then
+              branchPath="${GITHUB_HEAD_REF}"
+              IFS='/' read -ra refPaths <<< "$branchPath"
+              echo "${refPaths[0]}/${refPaths[1]}"
           fi
 
