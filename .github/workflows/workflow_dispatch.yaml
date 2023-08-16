@@ -25,7 +25,7 @@ jobs:
           echo "---  conditions ----"
           if [ $GITHUB_EVENT_NAME == "push" ] && [ $GITHUB_REF#refs/heads/ =~ (feature/dev-).*$ ] ; then
             echo "pppppppush!!!!!"
-            branchPath="${GITHUB_REF#refs/heads/}"
+            branchPath=${GITHUB_REF#refs/heads/}
             IFS='/' read -ra refPaths <<< "$branchPath"
             echo "${refPaths[1]}"
             
