@@ -26,7 +26,6 @@ jobs:
             # refPaths=(${GITHUB_HEAD_REF//\// })
             # echo $refPaths[1]
             echo "pppppppush!!!!"
-            echo 
           elif [ $GITHUB_EVENT_NAME == "pull_request" ] ; then
             echo "pppppppull_request!!!!!!!"
           fi
