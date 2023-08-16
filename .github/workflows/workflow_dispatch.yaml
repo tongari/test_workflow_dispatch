@@ -28,7 +28,7 @@ jobs:
               echo "pppppppush!!!!!"
               branchPath="${GITHUB_REF#refs/heads/}"
               IFS='/' read -ra refPaths <<< "$branchPath"
-              echo "${refPaths[0]/${refPaths[1]}"  
+              echo "${refPaths[0]}/${refPaths[1]}"
           # elif [ $GITHUB_EVENT_NAME == "pull_request" ] ; then
           #   echo "pppppppull_request!!!!!!!"
           fi
