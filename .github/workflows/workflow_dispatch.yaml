@@ -12,6 +12,6 @@ jobs:
       - run: |
           echo "Deploy!!!!"
           echo "${GITHUB_REF#refs/heads/}"
-          echo github.head_ref
+          echo "github.head_ref"
           echo "${GITHUB_BASE_REF}"
           echo "${GITHUB_REF#refs/base/}"
