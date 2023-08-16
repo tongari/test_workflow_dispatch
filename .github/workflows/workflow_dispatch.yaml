@@ -2,8 +2,8 @@ name: Workflow dispatch
 on:
   workflow_dispatch:
   push:
-    branches: [master]
-  pull_request:
+  #   branches: [master]
+  # pull_request:
 
 jobs:
   printDeploy:
@@ -12,7 +12,9 @@ jobs:
       - run: |
           echo "Deploy!!!!"
           echo "GITHUB_REF#refs/heads/: ${GITHUB_REF#refs/heads/}"
+          echo "GITHUB_HEAD_REF: ${GITHUB_HEAD_REF}"
           echo "github.head_ref: ${{github.head_ref}}"
+          echo "------"
           echo "GITHUB_BASE_REF: ${GITHUB_BASE_REF}"
-          echo "github.head_ref: ${{github.base_ref}}"
+          echo "github.base_ref: ${{github.base_ref}}"
           echo "GITHUB_REF#refs/base/: ${GITHUB_REF#refs/base/}"
