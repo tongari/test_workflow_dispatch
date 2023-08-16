@@ -25,6 +25,8 @@ jobs:
           echo "---  conditions ----"
           if [[ $GITHUB_EVENT_NAME == "push" ]] && [[ $GITHUB_HEAD_REF =~ (feature/dev-).*$ ]] ; then
             echo "pppppppush!!!!"
+            # refPaths=(${GITHUB_HEAD_REF//\// })
+            # echo $refPaths[1]
           elif [ $GITHUB_EVENT_NAME == "pull_request" ] ; then
             echo "pppppppull_request!!!!!!!"
           fi
